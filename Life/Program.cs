@@ -91,22 +91,8 @@ namespace Life
 
         public void SetResolutionAndDansity()
         {
-            string path = $@"..\..\DATA\{fromFile}.txt";
-
-            using (FileStream settingFile = new FileStream(path, FileMode.Open))
-            {
-                using (StreamWriter stream = new StreamWriter(settingFile))
-                {
-                    if (WhatNeeds == "resolution")
-                    {
-                        stream.WriteLine(resolution);
-                    }
-                    if (WhatNeeds == "density")
-                    {
-                        stream.WriteLine(density);
-                    }
-                }
-            }
+            Properties.Settings.Default.resolution = (int)resolution;
+            Properties.Settings.Default.Save();
         }
         public decimal ResolutionOrDensity()
         {

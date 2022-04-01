@@ -61,8 +61,6 @@ namespace Life.FRNS
         {   
             RAD setResolution = new RAD();
             setResolution.resolution = (int)nudResolution.Value;
-            setResolution.fromFile = "settingResolution";
-            setResolution.WhatNeeds = "resolution";
             setResolution.SetResolutionAndDansity();
 
             RAD setDensity = new RAD();
