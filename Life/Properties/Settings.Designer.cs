@@ -73,7 +73,7 @@ namespace Life.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("$@\"..\\..\\DATA\\backgroundImages\\default.png\"")]
         public string filePath {
             get {
                 return ((string)(this["filePath"]));

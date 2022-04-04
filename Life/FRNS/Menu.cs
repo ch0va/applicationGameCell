@@ -27,11 +27,8 @@ namespace Life
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
-        {
-            
-            Properties.Settings.Default.Save();
-           
-
+        {      
+           Properties.Settings.Default.Save();
             Application.Exit();
         }
 

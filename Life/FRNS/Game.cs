@@ -49,8 +49,11 @@ namespace Life.FRN
 
             if (Properties.Settings.Default.checkBoxImageChecked == true)
             {
-                backgroundImage = Image.FromFile(Properties.Settings.Default.filePath);
-                bmp = new Bitmap(backgroundImage, pictureBoxDisplay.Width, pictureBoxDisplay.Height + 1);
+                if (Properties.Settings.Default.filePath != "")
+                {
+                    backgroundImage = Image.FromFile(Properties.Settings.Default.filePath);
+                    bmp = new Bitmap(backgroundImage, pictureBoxDisplay.Width, pictureBoxDisplay.Height + 1);
+                }
             }
         }
 
@@ -105,8 +108,11 @@ namespace Life.FRN
 
             if (Properties.Settings.Default.checkBoxImageChecked == true)
             {
-                graphics.Clear(Color.FromName(newColorDisplay));
-                graphics.DrawImageUnscaled(bmp, 0, 0, pictureBoxDisplay.Width, pictureBoxDisplay.Height);
+                if (Properties.Settings.Default.filePath != "")
+                {
+                    graphics.Clear(Color.FromName(newColorDisplay));
+                    graphics.DrawImageUnscaled(bmp, 0, 0, pictureBoxDisplay.Width, pictureBoxDisplay.Height);
+                }
             }
 
             for (int x = 0; x < cols; x++)

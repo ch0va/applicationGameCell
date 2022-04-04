@@ -15,7 +15,7 @@
       <Value Profile="(Default)">black</Value>
     </Setting>
     <Setting Name="filePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">$@"..\..\DATA\backgroundImages\default.png"</Value>
     </Setting>
     <Setting Name="checkBoxImageChecked" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
