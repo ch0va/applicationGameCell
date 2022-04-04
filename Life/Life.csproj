@@ -46,40 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLS\Display\Density.cs" />
-    <Compile Include="CLS\Display\Resolution.cs" />
-    <Compile Include="CLS\New forn\NewFormGame.cs" />
-    <Compile Include="CLS\New forn\NewFormSettings.cs" />
-    <Compile Include="CLS\Theme\BackgroundImage.cs" />
-    <Compile Include="CLS\Theme\ColorDisplay.cs" />
-    <Compile Include="CLS\Theme\ColorElement.cs" />
-    <Compile Include="FRNS\Settings.cs">
+    <Compile Include="classes\Display\Density.cs" />
+    <Compile Include="classes\Display\Resolution.cs" />
+    <Compile Include="classes\New forn\NewFormGame.cs" />
+    <Compile Include="classes\New forn\NewFormSettings.cs" />
+    <Compile Include="classes\Theme\BackgroundImage.cs" />
+    <Compile Include="classes\Theme\ColorDisplay.cs" />
+    <Compile Include="classes\Theme\ColorElement.cs" />
+    <Compile Include="uI\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRNS\Settings.Designer.cs">
+    <Compile Include="uI\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRNS\Menu.cs">
+    <Compile Include="uI\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRNS\Menu.Designer.cs">
+    <Compile Include="uI\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRNS\Game.cs">
+    <Compile Include="uI\Game.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRNS\Game.Designer.cs">
+    <Compile Include="uI\Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
-    <Compile Include="CLS\Other\Program.cs" />
+    <Compile Include="classes\Other\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FRNS\Settings.resx">
+    <EmbeddedResource Include="uI\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRNS\Menu.resx">
+    <EmbeddedResource Include="uI\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRNS\Game.resx">
+    <EmbeddedResource Include="uI\Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -105,11 +105,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DATA\backgroundImages\default.png" />
+    <Content Include="data\backgroundImages\darktBackground.jpg" />
+    <Content Include="data\backgroundImages\liightBackground.jpg" />
+    <Content Include="data\colors.txt" />
+    <Content Include="resources\default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
