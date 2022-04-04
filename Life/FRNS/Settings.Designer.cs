@@ -36,8 +36,10 @@ namespace Life.FRNS
             this.labelDensity = new System.Windows.Forms.Label();
             this.labelResolution = new System.Windows.Forms.Label();
             this.buttonDefault = new System.Windows.Forms.Button();
-            this.comboBoxForms = new System.Windows.Forms.ComboBox();
+            this.comboBoxDisplay = new System.Windows.Forms.ComboBox();
             this.comboBoxElements = new System.Windows.Forms.ComboBox();
+            this.buttonUpload = new System.Windows.Forms.Button();
+            this.checkBoxImage = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudResolution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDensity)).BeginInit();
             this.SuspendLayout();
@@ -109,7 +111,7 @@ namespace Life.FRNS
             0,
             0,
             0});
-            this.nudDensity.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.nudDensity.ValueChanged += new System.EventHandler(this.nudDensity_ValueChanged);
             // 
             // labelDensity
             // 
@@ -139,15 +141,15 @@ namespace Life.FRNS
             this.buttonDefault.UseVisualStyleBackColor = true;
             this.buttonDefault.Click += new System.EventHandler(this.buttonDefault_Click);
             // 
-            // comboBoxForms
+            // comboBoxDisplay
             // 
-            this.comboBoxForms.FormattingEnabled = true;
-            this.comboBoxForms.Location = new System.Drawing.Point(284, 79);
-            this.comboBoxForms.Name = "comboBoxForms";
-            this.comboBoxForms.Size = new System.Drawing.Size(144, 21);
-            this.comboBoxForms.TabIndex = 15;
-            this.comboBoxForms.Text = "White";
-            this.comboBoxForms.SelectedIndexChanged += new System.EventHandler(this.comboBoxForms_SelectedIndexChanged);
+            this.comboBoxDisplay.FormattingEnabled = true;
+            this.comboBoxDisplay.Location = new System.Drawing.Point(284, 79);
+            this.comboBoxDisplay.Name = "comboBoxDisplay";
+            this.comboBoxDisplay.Size = new System.Drawing.Size(144, 21);
+            this.comboBoxDisplay.TabIndex = 15;
+            this.comboBoxDisplay.Text = "White";
+            this.comboBoxDisplay.SelectedIndexChanged += new System.EventHandler(this.comboBoxDisplay_SelectedIndexChanged);
             // 
             // comboBoxElements
             // 
@@ -159,14 +161,37 @@ namespace Life.FRNS
             this.comboBoxElements.Text = "Black";
             this.comboBoxElements.SelectedIndexChanged += new System.EventHandler(this.comboBoxElements_SelectedIndexChanged);
             // 
+            // buttonUpload
+            // 
+            this.buttonUpload.Location = new System.Drawing.Point(434, 79);
+            this.buttonUpload.Name = "buttonUpload";
+            this.buttonUpload.Size = new System.Drawing.Size(52, 21);
+            this.buttonUpload.TabIndex = 19;
+            this.buttonUpload.Text = "Upload";
+            this.buttonUpload.UseVisualStyleBackColor = true;
+            this.buttonUpload.Click += new System.EventHandler(this.buttonUpload_Click);
+            // 
+            // checkBoxImage
+            // 
+            this.checkBoxImage.AutoSize = true;
+            this.checkBoxImage.Location = new System.Drawing.Point(434, 56);
+            this.checkBoxImage.Name = "checkBoxImage";
+            this.checkBoxImage.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxImage.TabIndex = 20;
+            this.checkBoxImage.Text = "Use image?";
+            this.checkBoxImage.UseVisualStyleBackColor = true;
+            this.checkBoxImage.CheckedChanged += new System.EventHandler(this.checkBoxImage_CheckedChanged);
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.checkBoxImage);
+            this.Controls.Add(this.buttonUpload);
             this.Controls.Add(this.comboBoxElements);
-            this.Controls.Add(this.comboBoxForms);
+            this.Controls.Add(this.comboBoxDisplay);
             this.Controls.Add(this.buttonDefault);
             this.Controls.Add(this.labelResolution);
             this.Controls.Add(this.nudDensity);
@@ -192,7 +217,9 @@ namespace Life.FRNS
         private System.Windows.Forms.Label labelDensity;
         private System.Windows.Forms.Label labelResolution;
         public System.Windows.Forms.Button buttonDefault;
-        public System.Windows.Forms.ComboBox comboBoxForms;
+        public System.Windows.Forms.ComboBox comboBoxDisplay;
         public System.Windows.Forms.ComboBox comboBoxElements;
+        private System.Windows.Forms.Button buttonUpload;
+        public System.Windows.Forms.CheckBox checkBoxImage;
     }
 }

@@ -31,14 +31,13 @@ namespace Life.FRN
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.buttonNewGame = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonLoad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,7 +56,6 @@ namespace Life.FRN
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.buttonLoad);
             this.splitContainer1.Panel1.Controls.Add(this.buttonSave);
             this.splitContainer1.Panel1.Controls.Add(this.buttonNewGame);
             this.splitContainer1.Panel1.Controls.Add(this.buttonMenu);
@@ -68,14 +66,24 @@ namespace Life.FRN
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pictureBoxDisplay);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 121;
+            this.splitContainer1.SplitterDistance = 51;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(8, 136);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(36, 32);
+            this.buttonSave.TabIndex = 10;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonNewGame
             // 
-            this.buttonNewGame.Location = new System.Drawing.Point(20, 123);
+            this.buttonNewGame.Location = new System.Drawing.Point(8, 98);
             this.buttonNewGame.Name = "buttonNewGame";
-            this.buttonNewGame.Size = new System.Drawing.Size(75, 78);
+            this.buttonNewGame.Size = new System.Drawing.Size(36, 32);
             this.buttonNewGame.TabIndex = 9;
             this.buttonNewGame.Text = "New Game";
             this.buttonNewGame.UseVisualStyleBackColor = true;
@@ -83,9 +91,9 @@ namespace Life.FRN
             // 
             // buttonMenu
             // 
-            this.buttonMenu.Location = new System.Drawing.Point(20, 238);
+            this.buttonMenu.Location = new System.Drawing.Point(8, 201);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(75, 38);
+            this.buttonMenu.Size = new System.Drawing.Size(36, 32);
             this.buttonMenu.TabIndex = 8;
             this.buttonMenu.Text = "Menu";
             this.buttonMenu.UseVisualStyleBackColor = true;
@@ -93,9 +101,9 @@ namespace Life.FRN
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(20, 72);
+            this.buttonStop.Location = new System.Drawing.Point(5, 60);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(75, 38);
+            this.buttonStop.Size = new System.Drawing.Size(39, 32);
             this.buttonStop.TabIndex = 1;
             this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
@@ -103,9 +111,9 @@ namespace Life.FRN
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(20, 28);
+            this.buttonStart.Location = new System.Drawing.Point(5, 22);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(75, 38);
+            this.buttonStart.Size = new System.Drawing.Size(39, 32);
             this.buttonStart.TabIndex = 0;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
@@ -113,10 +121,13 @@ namespace Life.FRN
             // 
             // pictureBoxDisplay
             // 
+            this.pictureBoxDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxDisplay.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBoxDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxDisplay.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxDisplay.Name = "pictureBoxDisplay";
-            this.pictureBoxDisplay.Size = new System.Drawing.Size(671, 446);
+            this.pictureBoxDisplay.Size = new System.Drawing.Size(741, 446);
+            this.pictureBoxDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxDisplay.TabIndex = 0;
             this.pictureBoxDisplay.TabStop = false;
             this.pictureBoxDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxDisplay_MouseMove);
@@ -126,34 +137,15 @@ namespace Life.FRN
             this.timerGame.Interval = 40;
             this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
             // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(20, 302);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 10;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // buttonLoad
-            // 
-            this.buttonLoad.Location = new System.Drawing.Point(20, 331);
-            this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoad.TabIndex = 11;
-            this.buttonLoad.Text = "Load";
-            this.buttonLoad.UseMnemonic = false;
-            this.buttonLoad.UseVisualStyleBackColor = true;
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
-            // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
+            this.DoubleBuffered = true;
             this.Name = "FormGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game \"Cell\"";
@@ -177,6 +169,5 @@ namespace Life.FRN
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonNewGame;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonLoad;
     }
 }

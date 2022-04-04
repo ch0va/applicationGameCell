@@ -27,28 +27,27 @@ namespace Life
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
-        {  
+        {
+            
+            Properties.Settings.Default.Save();
+           
+
             Application.Exit();
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-
-            NewForm form = new NewForm();
-            form.GetFormSettings();
+            NewFormSettings s = new NewFormSettings();
+            s.GetFormSettings();
             this.Hide();
         }
 
         private void buttonPlay_Click(object sender, EventArgs e)
         {
-      
-            FormGame g = new FormGame();
-            g.buttonStop.Enabled = false;
-            g.buttonStart.Enabled = false;
+            NewFormGame s = new NewFormGame();
+            s.GetFormGame();
             this.Hide();
-            g.Show();
-          
-            
+              
         }
 
       

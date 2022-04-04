@@ -34,5 +34,89 @@ namespace Life.Properties {
                 this["resolution"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int density {
+            get {
+                return ((int)(this["density"]));
+            }
+            set {
+                this["density"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("white")]
+        public string colorDisplay {
+            get {
+                return ((string)(this["colorDisplay"]));
+            }
+            set {
+                this["colorDisplay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("black")]
+        public string colorElements {
+            get {
+                return ((string)(this["colorElements"]));
+            }
+            set {
+                this["colorElements"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string filePath {
+            get {
+                return ((string)(this["filePath"]));
+            }
+            set {
+                this["filePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxImageChecked {
+            get {
+                return ((bool)(this["checkBoxImageChecked"]));
+            }
+            set {
+                this["checkBoxImageChecked"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool thereImage {
+            get {
+                return ((bool)(this["thereImage"]));
+            }
+            set {
+                this["thereImage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool buttonAcceptEnabled {
+            get {
+                return ((bool)(this["buttonAcceptEnabled"]));
+            }
+            set {
+                this["buttonAcceptEnabled"] = value;
+            }
+        }
     }
 }

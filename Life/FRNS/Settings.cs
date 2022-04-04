@@ -10,78 +10,76 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Life.CLS.Theme;
 
 namespace Life.FRNS
 {
     public partial class FormSettings : Form
     {
-        public string selectedColorForms;
+        
+        BackgroundImage setBI = new BackgroundImage();
+        public string selectedColorDisplay;
         public string selectedColorElements;
+
         public string path = $@"..\..\DATA\colors.txt";
+        
         public FormSettings()
         {
-
             InitializeComponent();
+            checkBoxImage.Checked = false;
+            buttonUpload.Enabled = false;
             using (StreamReader f = new StreamReader(path, System.Text.Encoding.GetEncoding(1252)))
             {
                 string str;
                 while ((str = f.ReadLine()) != null)
                 {
-                    comboBoxForms.Items.Add(str + Environment.NewLine);
+                    comboBoxDisplay.Items.Add(str + Environment.NewLine);
                     comboBoxElements.Items.Add(str + Environment.NewLine);
                 }
             }
-
-            Theme colorForms = new Theme();
-            colorForms.selectedColor = selectedColorForms;
-            colorForms.SetTheme("selectedColorForms");
-
-            Theme colorElements = new Theme();
-            colorElements.selectedColor = selectedColorElements;
-            colorElements.SetTheme("selectedColorElements");
-
-
         }
-        public void Resolution()
+        public void BlockElements(bool tOF)
         {
-
-            /*resolution = (int)nudResolution.Value;
-            FormGame g = new FormGame();
-            g.resolution = resolution;
-            g.Show();
-            this.Close();*/
-
-
+            comboBoxDisplay.Enabled = tOF;
+            comboBoxElements.Enabled = tOF;
+            nudDensity.Enabled = tOF;
+            nudResolution.Enabled = tOF;
+            buttonAccept.Enabled = tOF;
+            buttonDefault.Enabled = tOF;
+            buttonMenu.Enabled = tOF;
         }
-
-
-
 
         public void buttonAccept_Click(object sender, EventArgs e)
-        {   
-            RAD setResolution = new RAD();
-            setResolution.resolution = (int)nudResolution.Value;
-            setResolution.SetResolutionAndDansity();
+        {
+            Resolution setResolution = new Resolution();
+            setResolution.SetResolution((int)nudResolution.Value);
 
-            RAD setDensity = new RAD();
-            setDensity.density = (int)nudDensity.Value;
-            setDensity.fromFile = "settingDensity";
-            setDensity.WhatNeeds = "density";
-            setDensity.SetResolutionAndDansity();
-
-           
-            Theme colorForms = new Theme();
-            colorForms.selectedColor = selectedColorForms;
-            colorForms.SetTheme("selectedColorForms") ;
-
-            Theme colorElements = new Theme();
-            colorElements.selectedColor = selectedColorElements;
-            colorElements.SetTheme("selectedColorElements");
+            Density setDensity = new Density();
+            setDensity.SetDensity((int)nudDensity.Value);
 
 
+            ColorDisplay colorDisplay = new ColorDisplay();
+            colorDisplay.SetColorDisplay(selectedColorDisplay) ;
+
+            ColorElement colorElements = new ColorElement();
+            colorElements.SetColorElement(selectedColorElements);
+
+            BlockElements(true);
+
+
+            if (checkBoxImage.Checked == true)
             {
-                buttonAccept.Enabled = false;
+                comboBoxDisplay.Enabled = false;
+                Properties.Settings.Default.checkBoxImageChecked = true;
             }
+
+            if (checkBoxImage.Checked == false)
+                Properties.Settings.Default.checkBoxImageChecked = false;
+
+            Properties.Settings.Default.Save();
+            
+            buttonAccept.Enabled = false;
+            
 
         }
 
@@ -94,16 +92,12 @@ namespace Life.FRNS
 
         private void nudResolution_ValueChanged(object sender, EventArgs e)
         {
-            {
-                buttonAccept.Enabled = true;
-            }
+            buttonAccept.Enabled = true;   
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void nudDensity_ValueChanged(object sender, EventArgs e)
         {
-            {
-                buttonAccept.Enabled = true;
-            }
+            buttonAccept.Enabled = true;
         }
 
         private void buttonDefault_Click(object sender, EventArgs e)
@@ -111,12 +105,14 @@ namespace Life.FRNS
             nudDensity.Value = 5;
             nudResolution.Value = 15;
 
-            comboBoxForms.SelectedIndex = 137;
-            comboBoxForms.Text = "White";
+            comboBoxDisplay.SelectedIndex = 137;
+            comboBoxDisplay.Text = "White";
 
             
             comboBoxElements.SelectedIndex = 7;
             comboBoxElements.Text = "Black";
+            checkBoxImage.Checked = false;
+          
             buttonAccept_Click(sender, e);
         }
 
@@ -128,12 +124,40 @@ namespace Life.FRNS
             buttonAccept.Enabled = true;
         }
 
-        private void comboBoxForms_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxDisplay_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedColorForms = comboBoxForms.SelectedItem.ToString();
+            selectedColorDisplay = comboBoxDisplay.SelectedItem.ToString();
             buttonAccept.Enabled = true;
         }
 
-       
+        private void buttonUpload_Click(object sender, EventArgs e)
+        {
+            setBI.SetBackgroundImage();
+            Properties.Settings.Default.thereImage = true;
+            string filePath = Properties.Settings.Default.filePath;
+            BlockElements(false);
+            buttonAccept.Enabled = Properties.Settings.Default.buttonAcceptEnabled;
+        }
+
+        private void checkBoxImage_CheckedChanged(object sender, EventArgs e)
+        {
+            buttonAccept.Enabled = true;
+            if (checkBoxImage.Checked == true)
+            {
+                comboBoxDisplay.Enabled = false;
+                buttonUpload.Enabled = true;
+                if (Properties.Settings.Default.thereImage == false)
+                {
+                    BlockElements(false);
+                   
+                }
+            }
+
+            if (checkBoxImage.Checked == false)
+            {
+                BlockElements(true);    
+                buttonUpload.Enabled = false;       
+            }
+        }
     }
 }

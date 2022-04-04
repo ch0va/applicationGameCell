@@ -11,19 +11,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using Life.CLS.Theme;
 
 namespace Life.FRN
 {
     public partial class FormGame : Form
     {
-        string myColorForm;
-        string myColorElements;
+        public Bitmap bmp;
+        string newColorDisplay;
+        string newColorElement;
         private Graphics graphics;
         public int resolution;
         public int density;
         public bool[,] cell;
         public int rows;
         public int cols;
+        public Image backgroundImage;
+        public int back;
 
         public FormGame()
         {
@@ -31,33 +35,30 @@ namespace Life.FRN
             InitializeComponent();
         }
 
-        public void GetResolutionAndDensity()
+        public void GetParameters()
         {
-            RAD getResolution = new RAD();
-            getResolution.fromFile = "settingResolution";
-            getResolution.WhatNeeds = "resolution";
-            resolution = (int)getResolution.ResolutionOrDensity();
+            resolution = Properties.Settings.Default.resolution;
 
-            RAD getDensity = new RAD();
-            getDensity.fromFile = "settingDensity";
-            getDensity.WhatNeeds = "density";
-            density = (int)getDensity.ResolutionOrDensity();
+            density = Properties.Settings.Default.density;
 
-            Theme newColorForm = new Theme();
-            newColorForm.GetTheme("selectedColorForms");
-            myColorForm = newColorForm.newSelectedColor;
+            newColorDisplay = Properties.Settings.Default.colorDisplay;
+            newColorDisplay = newColorDisplay.Trim();
 
-            Theme newColorElem = new Theme();
-            newColorElem.GetTheme("selectedColorElements");
-            myColorElements = newColorElem.newSelectedColor;
+            newColorElement = Properties.Settings.Default.colorElements;
+            newColorElement = newColorElement.Trim();
+
+            if (Properties.Settings.Default.checkBoxImageChecked == true)
+            {
+                backgroundImage = Image.FromFile(Properties.Settings.Default.filePath);
+                bmp = new Bitmap(backgroundImage, pictureBoxDisplay.Width, pictureBoxDisplay.Height + 1);
+            }
         }
 
         public void NewGame()
         {
-            GetResolutionAndDensity();
+            GetParameters();
             buttonStop.Enabled = true;
             buttonStart.Enabled = false;
-
 
             rows = pictureBoxDisplay.Height / resolution;
             cols = pictureBoxDisplay.Width / resolution;
@@ -94,12 +95,19 @@ namespace Life.FRN
             buttonStart.Enabled = false;
         }
 
-        private void NextGeneration()
+        private void NextGeneration(int back)
         {
+
             var newCell = new bool[cols, rows];
 
+            graphics.Clear(Color.FromName(newColorDisplay));
 
-            graphics.Clear(Color.FromName(myColorForm));
+
+            if (Properties.Settings.Default.checkBoxImageChecked == true)
+            {
+                graphics.Clear(Color.FromName(newColorDisplay));
+                graphics.DrawImageUnscaled(bmp, 0, 0, pictureBoxDisplay.Width, pictureBoxDisplay.Height);
+            }
 
             for (int x = 0; x < cols; x++)
             {
@@ -120,7 +128,7 @@ namespace Life.FRN
                         newCell[x, y] = cell[x, y];
                     }
 
-                    Brush myBrush = new SolidBrush(Color.FromName(myColorElements));
+                    Brush myBrush = new SolidBrush(Color.FromName(newColorElement));
                     if (hasLife)
                     {
                         graphics.FillRectangle(myBrush, x * resolution, y * resolution, resolution - 1, resolution - 1);
@@ -164,7 +172,7 @@ namespace Life.FRN
 
         private void timerGame_Tick(object sender, EventArgs e)
         {
-            NextGeneration();
+            NextGeneration(back);
         }
 
         private void pictureBoxDisplay_MouseMove(object sender, MouseEventArgs e)
@@ -214,39 +222,18 @@ namespace Life.FRN
             {
 
                 var SFD = new SaveFileDialog();
-                SFD.FileName = "pepepypy.png";
+                SFD.FileName = "Nameless.png";
                 if (SFD.ShowDialog() == DialogResult.OK)
                 {
 
                     pictureBoxDisplay.Image.Save(SFD.FileName);
-
                 }
-
             }
             else
             {
-                MessageBox.Show("Нет картинки на ImageBox!!!");
+                MessageBox.Show("Please, start a new game!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);   
             }
         }
-        public void AddImage()
-        {
-
-            if ((pictureBoxDisplay.Image == null))
-            {
-
-                var SFD = new OpenFileDialog();
-                SFD.FileName = "pepepypy.png";
-                if (SFD.ShowDialog() == DialogResult.OK)
-                {
-
-                    pictureBoxDisplay.Image = Image.FromFile("pepepypy.png");
-
-                }
-
-            }
-
-        }
-
 
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -254,9 +241,6 @@ namespace Life.FRN
             SaveImage();
         }
 
-        private void buttonLoad_Click(object sender, EventArgs e)
-        {
-            AddImage();
-        }
+       
     }
 }
