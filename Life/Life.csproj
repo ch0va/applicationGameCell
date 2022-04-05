@@ -111,6 +111,8 @@
     <Content Include="data\backgroundImages\liightBackground.jpg" />
     <Content Include="data\colors.txt" />
     <Content Include="resources\default.png" />
+    <Content Include="resources\logo.ico" />
+    <None Include="resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

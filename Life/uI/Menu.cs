@@ -48,25 +48,14 @@ namespace Life
               
         }
 
-        private void buttonHelp_Click(object sender, EventArgs e)
+     
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("The universe of the game «Cell» is an infinite, " +
-                "two-dimensional grid of square cells, " +
-                "each of which is in one of two possible states, " +
-                "live or dead.\nEvery cell interacts with its eight neighbours, " +
-                "which are the cells that are horizontally, vertically, " +
-                "or diagonally adjacent.\nAt each step in time, " +
-                "the following transitions occur:\n\n-Any live cell " +
-                "with fewer than two live neighbours dies. " +
-                "\n\n-Any live cell with two or three" +
-                " live neighbours lives on to the next generation." +
-                "\n\n-Any live cell with more than three live neighbours dies." +
-                " \n\n-Any dead cell with exactly three live " +
-                "neighbours becomes a live cell.\n\n Use the left mouse button " +
-                "to add live cells and the right mouse button to remove them." +
-                "\n\nYou can also upload your own background image in the settings." +
-                "\n\nPlese, enloy the game!","About program", 
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("The game «Cell»  is a simplified version of the" +
+                " «Game of Life», a cellular automaton developed " +
+                "by British mathematician John Horton Conway in 1970. ",
+                "About the program", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

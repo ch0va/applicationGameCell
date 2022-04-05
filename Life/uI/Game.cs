@@ -54,7 +54,7 @@ namespace Life.FRN
                 if (filePath != "")
                 {
                     backgroundImage = Image.FromFile(filePath);
-                    bmp = new Bitmap(backgroundImage, pictureBoxDisplay.Width, pictureBoxDisplay.Height + 1);
+                    bmp = new Bitmap(backgroundImage, pictureBoxDisplay.Width+1, pictureBoxDisplay.Height + 1);
                 }
                 
             }
@@ -247,11 +247,30 @@ namespace Life.FRN
         }
 
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The universe of the game «Cell» is an infinite, " +
+                "two-dimensional grid of square cells, " +
+                "each of which is in one of two possible states, " +
+                "live or dead.\nEvery cell interacts with its eight neighbours, " +
+                "which are the cells that are horizontally, vertically, " +
+                "or diagonally adjacent.\nAt each step in time, " +
+                "the following transitions occur:\n\n-Any live cell " +
+                "with fewer than two live neighbours dies. " +
+                "\n\n-Any live cell with two or three" +
+                " live neighbours lives on to the next generation." +
+                "\n\n-Any live cell with more than three live neighbours dies." +
+                " \n\n-Any dead cell with exactly three live " +
+                "neighbours becomes a live cell.\n\n Use the left mouse button " +
+                "to add live cells and the right mouse button to remove them." +
+                "\n\nYou can also upload your own background image in the settings." +
+                "\n\nPlease, enjoy the game!", "Reference Information",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void buttonSnapshot_Click(object sender, EventArgs e)
         {
             SaveImage();
         }
-
-       
     }
 }
