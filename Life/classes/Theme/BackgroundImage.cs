@@ -11,14 +11,17 @@ namespace Life.CLS.Theme
     class BackgroundImage
     {
         string filePath;
+        /// <summary>
+        /// Creating a new OpenFileDialog for loading an image from the computer.
+        /// </summary>
         public void SetBackgroundImage()
         {
-            var oFD = new OpenFileDialog();
-            oFD.Filter = "Image files (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png";
-            oFD.RestoreDirectory = true;
-            if (oFD.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png";
+            openFileDialog.RestoreDirectory = true;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                filePath = oFD.FileName;
+                filePath = openFileDialog.FileName;
                 Properties.Settings.Default.buttonAcceptEnabled = true;
                 Properties.Settings.Default.filePath = filePath;
                 Properties.Settings.Default.Save();

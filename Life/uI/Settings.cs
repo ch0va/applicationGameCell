@@ -188,7 +188,7 @@ namespace Life.FRNS
         {
             BoxWithMessage helpDensity = new BoxWithMessage();
             helpDensity.GetMessage("This parameter is responsible for changing " +
-                "the density of generation of new cell.","Help");
+                "the rarity of generation of new cell.","Help");
         }
 
         private void buttonHelpBackgroundColor_Click(object sender, EventArgs e)

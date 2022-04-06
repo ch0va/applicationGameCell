@@ -34,7 +34,7 @@ namespace Life.FRNS
             this.numericUpDownResolution = new System.Windows.Forms.NumericUpDown();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.numericUpDownDensity = new System.Windows.Forms.NumericUpDown();
-            this.labelDensity = new System.Windows.Forms.Label();
+            this.labelRarity = new System.Windows.Forms.Label();
             this.labelResolution = new System.Windows.Forms.Label();
             this.buttonDefault = new System.Windows.Forms.Button();
             this.comboBoxBackgroundColor = new System.Windows.Forms.ComboBox();
@@ -127,15 +127,15 @@ namespace Life.FRNS
             0});
             this.numericUpDownDensity.ValueChanged += new System.EventHandler(this.numericUpDownDensity_ValueChanged);
             // 
-            // labelDensity
+            // labelRarity
             // 
-            this.labelDensity.AutoSize = true;
-            this.labelDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDensity.Location = new System.Drawing.Point(179, 85);
-            this.labelDensity.Name = "labelDensity";
-            this.labelDensity.Size = new System.Drawing.Size(53, 16);
-            this.labelDensity.TabIndex = 11;
-            this.labelDensity.Text = "Density";
+            this.labelRarity.AutoSize = true;
+            this.labelRarity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRarity.Location = new System.Drawing.Point(179, 85);
+            this.labelRarity.Name = "labelRarity";
+            this.labelRarity.Size = new System.Drawing.Size(43, 16);
+            this.labelRarity.TabIndex = 11;
+            this.labelRarity.Text = "Rarity";
             // 
             // labelResolution
             // 
@@ -305,7 +305,7 @@ namespace Life.FRNS
             this.Controls.Add(this.buttonDefault);
             this.Controls.Add(this.labelResolution);
             this.Controls.Add(this.numericUpDownDensity);
-            this.Controls.Add(this.labelDensity);
+            this.Controls.Add(this.labelRarity);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.numericUpDownResolution);
             this.Controls.Add(this.buttonAccept);
@@ -328,7 +328,7 @@ namespace Life.FRNS
         public System.Windows.Forms.NumericUpDown numericUpDownResolution;
         private System.Windows.Forms.Button buttonMenu;
         public System.Windows.Forms.NumericUpDown numericUpDownDensity;
-        private System.Windows.Forms.Label labelDensity;
+        private System.Windows.Forms.Label labelRarity;
         private System.Windows.Forms.Label labelResolution;
         public System.Windows.Forms.Button buttonDefault;
         public System.Windows.Forms.ComboBox comboBoxBackgroundColor;
