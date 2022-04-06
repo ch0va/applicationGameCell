@@ -12,14 +12,15 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
 using Life.CLS.Theme;
+using Life.classes.other;
 
 namespace Life.FRN
 {
     public partial class FormGame : Form
     {
-        public Bitmap bmp;
-        string newColorDisplay;
-        string newColorElement;
+        public Bitmap bitmap;
+        public string newColorDisplay;
+        public string newColorElement;
         private Graphics graphics;
         public int resolution;
         public int density;
@@ -27,7 +28,8 @@ namespace Life.FRN
         public int rows;
         public int cols;
         public Image backgroundImage;
-        public int back;
+        public bool checkBoxImageCheckedFormSettings = Properties.Settings.Default.checkBoxImageChecked;
+        public string backgroundImagePath = Properties.Settings.Default.filePath;
 
         public FormGame()
         {
@@ -35,42 +37,45 @@ namespace Life.FRN
             InitializeComponent();
         }
 
-        public void GetParameters()
+        /// <summary>
+        /// Getting variable values from Properties and checking for an image.
+        /// </summary>
+        public void GetAllParameters()
         {
             resolution = Properties.Settings.Default.resolution;
 
             density = Properties.Settings.Default.density;
 
-            newColorDisplay = Properties.Settings.Default.colorDisplay;
+            newColorDisplay = Properties.Settings.Default.backgroundColor;
             newColorDisplay = newColorDisplay.Trim();
 
-            newColorElement = Properties.Settings.Default.colorElements;
+            newColorElement = Properties.Settings.Default.cellColor;
             newColorElement = newColorElement.Trim();
-
-            string filePath = Properties.Settings.Default.filePath;
-
-            if (Properties.Settings.Default.checkBoxImageChecked == true)
+            
+            if (checkBoxImageCheckedFormSettings == true)
             {
-                if (filePath != "")
+                if (backgroundImagePath != "")
                 {
-                    backgroundImage = Image.FromFile(filePath);
-                    bmp = new Bitmap(backgroundImage, pictureBoxDisplay.Width+1, pictureBoxDisplay.Height + 1);
+                    backgroundImage = Image.FromFile(backgroundImagePath); //Setting the uploaded image as the background image
+                    bitmap = new Bitmap(backgroundImage, pictureBoxDisplay.Width+1, pictureBoxDisplay.Height + 1);
                 }
                 
             }
         }
-
+        /// <summary>
+        /// Starting a new generation of cells.
+        /// </summary>
         public void NewGame()
         {
-            GetParameters();
+            GetAllParameters();
             buttonStop.Enabled = true;
             buttonStart.Enabled = false;
 
-            rows = pictureBoxDisplay.Height / resolution;
+            rows = pictureBoxDisplay.Height / resolution; 
             cols = pictureBoxDisplay.Width / resolution;
             cell = new bool[cols, rows];
 
-            Random rand = new Random();
+            Random rand = new Random(); //Randomly filling the game screen with cells according to a given resolution.
             for (int x = 0; x < cols; x++)
             {
                 for (int y = 0; y < rows; y++)
@@ -83,6 +88,9 @@ namespace Life.FRN
             graphics = Graphics.FromImage(pictureBoxDisplay.Image);
             timerGame.Start();
         }
+        /// <summary>
+        /// Start game timer
+        /// </summary>
         public void StopGame()
         {
             if (!timerGame.Enabled)
@@ -92,6 +100,9 @@ namespace Life.FRN
             buttonStart.Enabled = true;
 
         }
+        /// <summary>
+        /// stop game timer
+        /// </summary>
         public void StartGame()
         {
             if (timerGame.Enabled)
@@ -100,8 +111,10 @@ namespace Life.FRN
             buttonStop.Enabled = true;
             buttonStart.Enabled = false;
         }
-
-        private void NextGeneration(int back)
+        /// <summary>
+        /// Getting the parameters of the new generation.
+        /// </summary>
+        private void NextGeneration()
         {
 
             var newCell = new bool[cols, rows];
@@ -109,22 +122,22 @@ namespace Life.FRN
             graphics.Clear(Color.FromName(newColorDisplay));
 
 
-            if (Properties.Settings.Default.checkBoxImageChecked == true)
+            if (checkBoxImageCheckedFormSettings == true)
             {
-                if (Properties.Settings.Default.filePath != "")
+                if (backgroundImagePath != "")
                 {
                     graphics.Clear(Color.FromName(newColorDisplay));
-                    graphics.DrawImageUnscaled(bmp, 0, 0, pictureBoxDisplay.Width, pictureBoxDisplay.Height);
+                    graphics.DrawImageUnscaled(bitmap, 0, 0, pictureBoxDisplay.Width, pictureBoxDisplay.Height);
                 }
                 else
                     Properties.Settings.Default.checkBoxImageChecked = false;
             }
 
-            for (int x = 0; x < cols; x++)
+            for (int x = 0; x < cols; x++) //Creation of new cells according to the rules of the game.
             {
                 for (int y = 0; y < rows; y++)
                 {
-                    var neighboursCount = CountNeighbours(x, y);
+                    int neighboursCount = CountNeighbours(x, y);
                     var hasLife = cell[x, y];
                     if (!hasLife && neighboursCount == 3)
                     {
@@ -139,7 +152,7 @@ namespace Life.FRN
                         newCell[x, y] = cell[x, y];
                     }
 
-                    Brush myBrush = new SolidBrush(Color.FromName(newColorElement));
+                    Brush myBrush = new SolidBrush(Color.FromName(newColorElement)); //Setting cell colors.
                     if (hasLife)
                     {
                         graphics.FillRectangle(myBrush, x * resolution, y * resolution, resolution - 1, resolution - 1);
@@ -147,8 +160,14 @@ namespace Life.FRN
                 }
             }
             cell = newCell;
-            pictureBoxDisplay.Refresh();
+            pictureBoxDisplay.Refresh(); //Game screen refreshing with new cell generation.
         }
+        /// <summary>
+        /// Finding the count of neighbors of each cell.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         private int CountNeighbours(int x, int y)
         {
             int count = 0;
@@ -183,24 +202,25 @@ namespace Life.FRN
 
         private void timerGame_Tick(object sender, EventArgs e)
         {
-            NextGeneration(back);
+            NextGeneration();
         }
-
+       
+      
         private void pictureBoxDisplay_MouseMove(object sender, MouseEventArgs e)
         {
             if (!timerGame.Enabled)
                 return;
-
-            if (e.Button == MouseButtons.Left)
+            
+            if (e.Button == MouseButtons.Left) // Creating a new cell with the left mouse button.
             {
-                var x = e.Location.X / resolution;
-                var y = e.Location.Y / resolution;
-                var control = InvalidMousePosition(x, y);
+                int x = e.Location.X / resolution;
+                int y = e.Location.Y / resolution;
+                bool control = InvalidMousePosition(x, y);
                 if (control)
                     cell[x, y] = true;
             }
 
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right) // Deleting a cell with the right mouse button.
             {
                 var x = e.Location.X / resolution;
                 var y = e.Location.Y / resolution;
@@ -210,46 +230,50 @@ namespace Life.FRN
             }
         }
 
-        private bool InvalidMousePosition(int x, int y)
+        private bool InvalidMousePosition(int x, int y) //Checking the edge of the screen as an invalid value to create a cell.
         {
             return x >= 0 && y >= 0 && x < cols && y < rows;
         }
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            FormMenu m = new FormMenu();
-            m.Show();
+            FormMenu formMenu = new FormMenu();
+            formMenu.Show();
             this.Close();
         }
 
-        private void buttonNewGame_Click_1(object sender, EventArgs e)
+        private void buttonNewGame_Click(object sender, EventArgs e)
         {
             NewGame();
         }
-
-        public void SaveImage()
+        /// <summary>
+        /// Save a screenshot of the game screen on computer.
+        /// </summary>
+        public void SaveSnapshot()
         {
             if (!(pictureBoxDisplay.Image == null))
             {
 
-                var SFD = new SaveFileDialog();
-                SFD.FileName = "Nameless.png";
-                if (SFD.ShowDialog() == DialogResult.OK)
+                var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Nameless.png";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
 
-                    pictureBoxDisplay.Image.Save(SFD.FileName);
+                    pictureBoxDisplay.Image.Save(saveFileDialog.FileName);
                 }
             }
             else
             {
-                MessageBox.Show("Please, start a new game!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);   
+                MessageBox.Show("Game screen is clean. Please, start a new game!", 
+                    "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);   
             }
         }
 
 
         private void buttonHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The universe of the game «Cell» is an infinite, " +
+            BoxWithMessage help = new BoxWithMessage();
+            help.GetMessage("The universe of the game «Cell» is an infinite, " +
                 "two-dimensional grid of square cells, " +
                 "each of which is in one of two possible states, " +
                 "live or dead.\nEvery cell interacts with its eight neighbours, " +
@@ -264,13 +288,12 @@ namespace Life.FRN
                 "neighbours becomes a live cell.\n\n Use the left mouse button " +
                 "to add live cells and the right mouse button to remove them." +
                 "\n\nYou can also upload your own background image in the settings." +
-                "\n\nPlease, enjoy the game!", "Reference Information",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "\n\nPlease, enjoy the game!", "Reference Information");
         }
 
         private void buttonSnapshot_Click(object sender, EventArgs e)
         {
-            SaveImage();
+            SaveSnapshot();
         }
     }
 }

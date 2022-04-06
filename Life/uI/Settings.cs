@@ -11,65 +11,69 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Life.CLS.Theme;
+using Life.classes.other;
 
 namespace Life.FRNS
 {
     public partial class FormSettings : Form
     {
 
-        BackgroundImage setBI = new BackgroundImage();
+        BackgroundImage setBackgroundImag = new BackgroundImage();
         public string selectedColorDisplay;
         public string selectedColorElements;
-
-        public string path = $@"..\..\DATA\colors.txt";
+        public string pathColors = $@"..\..\DATA\colors.txt";
 
         public FormSettings()
         {
             InitializeComponent();
             checkBoxImage.Checked = false;
             buttonUpload.Enabled = false;
-            using (StreamReader f = new StreamReader(path, System.Text.Encoding.GetEncoding(1252)))
+            using (StreamReader f = new StreamReader(pathColors, System.Text.Encoding.GetEncoding(1252)))
             {
                 string str;
                 while ((str = f.ReadLine()) != null)
                 {
-                    comboBoxDisplay.Items.Add(str + Environment.NewLine);
-                    comboBoxElements.Items.Add(str + Environment.NewLine);
+                    comboBoxBackgroundColor.Items.Add(str + Environment.NewLine);
+                    comboBoxCellColor.Items.Add(str + Environment.NewLine);
                 }
             }
         }
-        public void BlockElements(bool tOF)
+        /// <summary>
+        /// Changing the Enabled form Elements
+        /// </summary>
+        /// <param name="trueOrFalse"></param>
+        public void BlockElements(bool trueOrFalse)
         {
-            comboBoxDisplay.Enabled = tOF;
-            comboBoxElements.Enabled = tOF;
-            nudDensity.Enabled = tOF;
-            nudResolution.Enabled = tOF;
-            buttonAccept.Enabled = tOF;
-            buttonDefault.Enabled = tOF;
-            buttonMenu.Enabled = tOF;
+            comboBoxBackgroundColor.Enabled = trueOrFalse;
+            comboBoxCellColor.Enabled = trueOrFalse;
+            numericUpDownDensity.Enabled = trueOrFalse;
+            numericUpDownResolution.Enabled = trueOrFalse;
+            buttonAccept.Enabled = trueOrFalse;
+            buttonDefault.Enabled = trueOrFalse;
+            buttonMenu.Enabled = trueOrFalse;
         }
-
+      
         public void buttonAccept_Click(object sender, EventArgs e)
         {
             Resolution setResolution = new Resolution();
-            setResolution.SetResolution((int)nudResolution.Value);
+            setResolution.SetResolution((int)numericUpDownResolution.Value);
 
             Density setDensity = new Density();
-            setDensity.SetDensity((int)nudDensity.Value);
+            setDensity.SetDensity((int)numericUpDownDensity.Value);
 
 
-            ColorDisplay colorDisplay = new ColorDisplay();
-            colorDisplay.SetColorDisplay(selectedColorDisplay);
+            BackgroundColor colorDisplay = new BackgroundColor();
+            colorDisplay.SetBackgroundColor(selectedColorDisplay);
 
-            ColorElement colorElements = new ColorElement();
-            colorElements.SetColorElement(selectedColorElements);
+            CellColor colorElements = new CellColor();
+            colorElements.SetCellColor(selectedColorElements);
 
             BlockElements(true);
 
 
             if (checkBoxImage.Checked == true)
             {
-                comboBoxDisplay.Enabled = false;
+                comboBoxBackgroundColor.Enabled = false;
                 Properties.Settings.Default.checkBoxImageChecked = true;
             }
 
@@ -85,32 +89,32 @@ namespace Life.FRNS
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            FormMenu m = new FormMenu();
-            m.Show();
+            FormMenu formMenu = new FormMenu();
+            formMenu.Show();
             this.Close();
         }
 
-        private void nudResolution_ValueChanged(object sender, EventArgs e)
+        private void numericUpDownResolution_ValueChanged(object sender, EventArgs e)
         {
             buttonAccept.Enabled = true;
         }
 
-        private void nudDensity_ValueChanged(object sender, EventArgs e)
+        private void numericUpDownDensity_ValueChanged(object sender, EventArgs e)
         {
             buttonAccept.Enabled = true;
         }
 
         private void buttonDefault_Click(object sender, EventArgs e)
         {
-            nudDensity.Value = 5;
-            nudResolution.Value = 15;
+            numericUpDownDensity.Value = 5;
+            numericUpDownResolution.Value = 15;
 
-            comboBoxDisplay.SelectedIndex = 137;
-            comboBoxDisplay.Text = "White";
+            comboBoxBackgroundColor.SelectedIndex = 137;
+            comboBoxBackgroundColor.Text = "White";
 
 
-            comboBoxElements.SelectedIndex = 7;
-            comboBoxElements.Text = "Black";
+            comboBoxCellColor.SelectedIndex = 7;
+            comboBoxCellColor.Text = "Black";
             checkBoxImage.Checked = false;
 
             buttonAccept_Click(sender, e);
@@ -118,21 +122,21 @@ namespace Life.FRNS
 
 
 
-        private void comboBoxElements_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxCellColor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedColorElements = comboBoxElements.SelectedItem.ToString();
+            selectedColorElements = comboBoxCellColor.SelectedItem.ToString();
             buttonAccept.Enabled = true;
         }
 
-        private void comboBoxDisplay_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxBackgroundColor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedColorDisplay = comboBoxDisplay.SelectedItem.ToString();
+            selectedColorDisplay = comboBoxBackgroundColor.SelectedItem.ToString();
             buttonAccept.Enabled = true;
         }
 
         private void buttonUpload_Click(object sender, EventArgs e)
         {
-            setBI.SetBackgroundImage();
+            setBackgroundImag.SetBackgroundImage();
             Properties.Settings.Default.thereImage = true;
             string filePath = Properties.Settings.Default.filePath;
             BlockElements(false);
@@ -144,12 +148,11 @@ namespace Life.FRNS
             buttonAccept.Enabled = true;
             if (checkBoxImage.Checked == true)
             {
-                comboBoxDisplay.Enabled = false;
+                comboBoxBackgroundColor.Enabled = false;
                 buttonUpload.Enabled = true;
                 if (Properties.Settings.Default.thereImage == false)
                 {
                     BlockElements(false);
-
                 }
             }
 
@@ -162,37 +165,38 @@ namespace Life.FRNS
 
         private void buttonHelpResolution_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This parameter is responsible for changing " +
-                "the resolution of the game screen.",
-               "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BoxWithMessage helpResolution = new BoxWithMessage();
+            helpResolution.GetMessage("This parameter is responsible for changing " +
+                "the resolution of the game screen.","Help");                   
         }
 
         private void buttonHelpCellColor_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This parameter is responsible " +
-                "for changing the color of the cells.", "Help", 
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BoxWithMessage helpCellColor = new BoxWithMessage();
+            helpCellColor.GetMessage("This parameter is responsible " +
+                "for changing the color of the cells.", "Help");
         }
 
         private void buttonHelpImage_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Check this box if you want to set your " +
-                "own image as the game screen background.", "Help",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);   
+            BoxWithMessage helpImage = new BoxWithMessage();
+            helpImage.GetMessage("Check this box if you want to set your " +
+                "own image as the game screen background.", "Help");
         }
 
         private void buttonHelpDensity_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This parameter is responsible for changing " +
-                "the density of generation of new cell.",
-              "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BoxWithMessage helpDensity = new BoxWithMessage();
+            helpDensity.GetMessage("This parameter is responsible for changing " +
+                "the density of generation of new cell.","Help");
         }
 
-        private void buttonHelpBackgroundcolor_Click(object sender, EventArgs e)
+        private void buttonHelpBackgroundColor_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This parameter is responsible for changing " +
-                "the color of the background image of the game screen.",
-             "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BoxWithMessage helpBackgroundcolor = new BoxWithMessage();
+            helpBackgroundcolor.GetMessage("This parameter is responsible for changing " +
+                "the color of the background image of the game screen.","Help");
         }
+
     }
 }

@@ -35,27 +35,26 @@ namespace Life
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            NewFormSettings s = new NewFormSettings();
-            s.GetFormSettings();
+            NewFormSettings formSettings = new NewFormSettings();
+            formSettings.GetFormSettings();
             this.Hide();
         }
 
         private void buttonPlay_Click(object sender, EventArgs e)
         {
-            NewFormGame s = new NewFormGame();
-            s.GetFormGame();
+            NewFormGame formGame = new NewFormGame();
+            formGame.GetFormGame();
             this.Hide();
               
         }
 
-     
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabelAboutProgram_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("The game «Cell»  is a simplified version of the" +
-                " «Game of Life», a cellular automaton developed " +
-                "by British mathematician John Horton Conway in 1970. ",
-                "About the program", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               " «Game of Life», a cellular automaton developed " +
+               "by British mathematician John Horton Conway in 1970. ",
+               "About the program", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

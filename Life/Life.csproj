@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\Display\Density.cs" />
-    <Compile Include="classes\Display\Resolution.cs" />
-    <Compile Include="classes\New forn\NewFormGame.cs" />
-    <Compile Include="classes\New forn\NewFormSettings.cs" />
-    <Compile Include="classes\Theme\BackgroundImage.cs" />
-    <Compile Include="classes\Theme\ColorDisplay.cs" />
-    <Compile Include="classes\Theme\ColorElement.cs" />
+    <Compile Include="classes\display\Density.cs" />
+    <Compile Include="classes\display\Resolution.cs" />
+    <Compile Include="classes\newForm\NewFormGame.cs" />
+    <Compile Include="classes\newForm\NewFormSettings.cs" />
+    <Compile Include="classes\other\BoxWithMessage.cs" />
+    <Compile Include="classes\theme\BackgroundImage.cs" />
+    <Compile Include="classes\theme\BackgroundColor.cs" />
+    <Compile Include="classes\theme\CellColor.cs" />
     <Compile Include="uI\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,7 +72,7 @@
     <Compile Include="uI\Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
-    <Compile Include="classes\Other\Program.cs" />
+    <Compile Include="classes\other\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="uI\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

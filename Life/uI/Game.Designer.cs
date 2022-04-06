@@ -131,7 +131,7 @@ namespace Life.FRN
             this.buttonNewGame.TabIndex = 3;
             this.buttonNewGame.Text = "New game";
             this.buttonNewGame.UseVisualStyleBackColor = true;
-            this.buttonNewGame.Click += new System.EventHandler(this.buttonNewGame_Click_1);
+            this.buttonNewGame.Click += new System.EventHandler(this.buttonNewGame_Click);
             // 
             // buttonMenu
             // 

@@ -35,7 +35,7 @@ namespace Life
             this.buttonExit = new System.Windows.Forms.Button();
             this.logo = new System.Windows.Forms.PictureBox();
             this.labelMenu = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelAboutProgram = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,17 +96,17 @@ namespace Life
             this.labelMenu.TabIndex = 5;
             this.labelMenu.Text = "MENU";
             // 
-            // linkLabel1
+            // linkLabelAboutProgram
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkLabel1.Location = new System.Drawing.Point(273, 212);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(108, 15);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "About the program";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabelAboutProgram.AutoSize = true;
+            this.linkLabelAboutProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabelAboutProgram.Location = new System.Drawing.Point(273, 212);
+            this.linkLabelAboutProgram.Name = "linkLabelAboutProgram";
+            this.linkLabelAboutProgram.Size = new System.Drawing.Size(108, 15);
+            this.linkLabelAboutProgram.TabIndex = 6;
+            this.linkLabelAboutProgram.TabStop = true;
+            this.linkLabelAboutProgram.Text = "About the program";
+            this.linkLabelAboutProgram.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAboutProgram_LinkClicked);
             // 
             // FormMenu
             // 
@@ -117,7 +117,7 @@ namespace Life
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(424, 241);
             this.ControlBox = false;
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.linkLabelAboutProgram);
             this.Controls.Add(this.labelMenu);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.buttonExit);
@@ -145,7 +145,7 @@ namespace Life
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Label labelMenu;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelAboutProgram;
     }
 }
 

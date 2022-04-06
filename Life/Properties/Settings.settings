@@ -8,10 +8,10 @@
     <Setting Name="density" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="colorDisplay" Type="System.String" Scope="User">
+    <Setting Name="backgroundColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">white</Value>
     </Setting>
-    <Setting Name="colorElements" Type="System.String" Scope="User">
+    <Setting Name="cellColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">black</Value>
     </Setting>
     <Setting Name="filePath" Type="System.String" Scope="User">

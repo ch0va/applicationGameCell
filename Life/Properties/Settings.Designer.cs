@@ -50,24 +50,24 @@ namespace Life.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("white")]
-        public string colorDisplay {
+        public string backgroundColor {
             get {
-                return ((string)(this["colorDisplay"]));
+                return ((string)(this["backgroundColor"]));
             }
             set {
-                this["colorDisplay"] = value;
+                this["backgroundColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("black")]
-        public string colorElements {
+        public string cellColor {
             get {
-                return ((string)(this["colorElements"]));
+                return ((string)(this["cellColor"]));
             }
             set {
-                this["colorElements"] = value;
+                this["cellColor"] = value;
             }
         }
         
