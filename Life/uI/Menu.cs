@@ -1,5 +1,4 @@
-﻿using Life.FRN;
-using Life.FRNS;
+﻿using Life.classes.other;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,10 +50,11 @@ namespace Life
 
         private void linkLabelAboutProgram_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("The game «Cell»  is a simplified version of the" +
+            BoxWithMessage helpImage = new BoxWithMessage();
+            helpImage.GetMessage("The game «Cell»  is a simplified version of the" +
                " «Game of Life», a cellular automaton developed " +
-               "by British mathematician John Horton Conway in 1970. ",
-               "About the program", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               "by British mathematician John Horton Conway in 1970. ", "About the program");
+           
         }
     }
 }

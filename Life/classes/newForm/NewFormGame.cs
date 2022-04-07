@@ -12,7 +12,7 @@ namespace Life
         public void GetFormGame()
         {
 
-            FormGame formGame = new FormGame();
+            formGame formGame = new formGame();
             formGame.buttonStop.Enabled = false;
             formGame.buttonStart.Enabled = false;
             formGame.Show();

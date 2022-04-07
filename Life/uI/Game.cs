@@ -16,7 +16,7 @@ using Life.classes.other;
 
 namespace Life.FRN
 {
-    public partial class FormGame : Form
+    public partial class formGame : Form
     {
         public Bitmap bitmap;
         public string newColorDisplay;
@@ -31,9 +31,8 @@ namespace Life.FRN
         public bool checkBoxImageCheckedFormSettings = Properties.Settings.Default.checkBoxImageChecked;
         public string backgroundImagePath = Properties.Settings.Default.filePath;
 
-        public FormGame()
+        public formGame()
         {
-
             InitializeComponent();
         }
 
@@ -62,6 +61,7 @@ namespace Life.FRN
                 
             }
         }
+
         /// <summary>
         /// Starting a new generation of cells.
         /// </summary>
@@ -88,6 +88,7 @@ namespace Life.FRN
             graphics = Graphics.FromImage(pictureBoxDisplay.Image);
             timerGame.Start();
         }
+
         /// <summary>
         /// Start game timer
         /// </summary>
@@ -100,6 +101,7 @@ namespace Life.FRN
             buttonStart.Enabled = true;
 
         }
+
         /// <summary>
         /// stop game timer
         /// </summary>
@@ -111,6 +113,7 @@ namespace Life.FRN
             buttonStop.Enabled = true;
             buttonStart.Enabled = false;
         }
+
         /// <summary>
         /// Getting the parameters of the new generation.
         /// </summary>
@@ -162,6 +165,7 @@ namespace Life.FRN
             cell = newCell;
             pictureBoxDisplay.Refresh(); //Game screen refreshing with new cell generation.
         }
+
         /// <summary>
         /// Finding the count of neighbors of each cell.
         /// </summary>
@@ -246,6 +250,7 @@ namespace Life.FRN
         {
             NewGame();
         }
+
         /// <summary>
         /// Save a screenshot of the game screen on computer.
         /// </summary>

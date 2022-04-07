@@ -70,7 +70,7 @@ namespace Life
             this.buttonExit.Location = new System.Drawing.Point(261, 167);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(134, 38);
-            this.buttonExit.TabIndex = 4;
+            this.buttonExit.TabIndex = 3;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
@@ -103,7 +103,7 @@ namespace Life
             this.linkLabelAboutProgram.Location = new System.Drawing.Point(273, 212);
             this.linkLabelAboutProgram.Name = "linkLabelAboutProgram";
             this.linkLabelAboutProgram.Size = new System.Drawing.Size(108, 15);
-            this.linkLabelAboutProgram.TabIndex = 6;
+            this.linkLabelAboutProgram.TabIndex = 4;
             this.linkLabelAboutProgram.TabStop = true;
             this.linkLabelAboutProgram.Text = "About the program";
             this.linkLabelAboutProgram.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAboutProgram_LinkClicked);
@@ -123,11 +123,10 @@ namespace Life
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.buttonPlay);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(440, 280);
-            this.MinimumSize = new System.Drawing.Size(440, 280);
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game \"Cell\" - Menu";

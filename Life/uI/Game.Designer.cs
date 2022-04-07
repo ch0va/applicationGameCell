@@ -1,7 +1,7 @@
 ﻿
 namespace Life.FRN
 {
-    partial class FormGame
+    partial class formGame
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,18 @@ namespace Life.FRN
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGame));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formGame));
             this.splitContainerGame = new System.Windows.Forms.SplitContainer();
-            this.labelSettings = new System.Windows.Forms.Label();
+            this.labelGame = new System.Windows.Forms.Label();
             this.buttonHelp = new System.Windows.Forms.Button();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonSnapshot = new System.Windows.Forms.Button();
             this.buttonNewGame = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
-            this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGame)).BeginInit();
             this.splitContainerGame.Panel1.SuspendLayout();
             this.splitContainerGame.Panel2.SuspendLayout();
@@ -61,7 +61,7 @@ namespace Life.FRN
             // 
             // splitContainerGame.Panel1
             // 
-            this.splitContainerGame.Panel1.Controls.Add(this.labelSettings);
+            this.splitContainerGame.Panel1.Controls.Add(this.labelGame);
             this.splitContainerGame.Panel1.Controls.Add(this.buttonHelp);
             this.splitContainerGame.Panel1.Controls.Add(this.pictureBoxLogo);
             this.splitContainerGame.Panel1.Controls.Add(this.buttonSnapshot);
@@ -77,16 +77,16 @@ namespace Life.FRN
             this.splitContainerGame.SplitterDistance = 95;
             this.splitContainerGame.TabIndex = 0;
             // 
-            // labelSettings
+            // labelGame
             // 
-            this.labelSettings.AutoSize = true;
-            this.labelSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSettings.ForeColor = System.Drawing.Color.Black;
-            this.labelSettings.Location = new System.Drawing.Point(5, 24);
-            this.labelSettings.Name = "labelSettings";
-            this.labelSettings.Size = new System.Drawing.Size(86, 29);
-            this.labelSettings.TabIndex = 22;
-            this.labelSettings.Text = "GAME";
+            this.labelGame.AutoSize = true;
+            this.labelGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGame.ForeColor = System.Drawing.Color.Black;
+            this.labelGame.Location = new System.Drawing.Point(5, 24);
+            this.labelGame.Name = "labelGame";
+            this.labelGame.Size = new System.Drawing.Size(86, 29);
+            this.labelGame.TabIndex = 22;
+            this.labelGame.Text = "GAME";
             // 
             // buttonHelp
             // 
@@ -99,17 +99,6 @@ namespace Life.FRN
             this.buttonHelp.Text = "Help";
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBoxLogo.Image = global::Life.Properties.Resources.logo;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(10, 894);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(76, 163);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 1;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // buttonSnapshot
             // 
@@ -166,6 +155,22 @@ namespace Life.FRN
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
+            // timerGame
+            // 
+            this.timerGame.Interval = 40;
+            this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.pictureBoxLogo.Location = new System.Drawing.Point(10, 894);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(76, 163);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 1;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // pictureBoxDisplay
             // 
             this.pictureBoxDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -179,12 +184,7 @@ namespace Life.FRN
             this.pictureBoxDisplay.TabStop = false;
             this.pictureBoxDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxDisplay_MouseMove);
             // 
-            // timerGame
-            // 
-            this.timerGame.Interval = 40;
-            this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
-            // 
-            // FormGame
+            // formGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,7 +197,7 @@ namespace Life.FRN
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormGame";
+            this.Name = "formGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game \"Cell\"";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -224,6 +224,6 @@ namespace Life.FRN
         private System.Windows.Forms.Button buttonSnapshot;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.Button buttonHelp;
-        private System.Windows.Forms.Label labelSettings;
+        private System.Windows.Forms.Label labelGame;
     }
 }

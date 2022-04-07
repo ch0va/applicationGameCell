@@ -66,7 +66,7 @@ namespace Life.FRNS
             // 
             // numericUpDownResolution
             // 
-            this.numericUpDownResolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDownResolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numericUpDownResolution.Location = new System.Drawing.Point(182, 155);
             this.numericUpDownResolution.Maximum = new decimal(new int[] {
             25,
@@ -80,7 +80,7 @@ namespace Life.FRNS
             0});
             this.numericUpDownResolution.Name = "numericUpDownResolution";
             this.numericUpDownResolution.ReadOnly = true;
-            this.numericUpDownResolution.Size = new System.Drawing.Size(109, 24);
+            this.numericUpDownResolution.Size = new System.Drawing.Size(109, 22);
             this.numericUpDownResolution.TabIndex = 7;
             this.numericUpDownResolution.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownResolution.Value = new decimal(new int[] {
@@ -104,7 +104,7 @@ namespace Life.FRNS
             // numericUpDownDensity
             // 
             this.numericUpDownDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownDensity.Location = new System.Drawing.Point(182, 99);
+            this.numericUpDownDensity.Location = new System.Drawing.Point(182, 101);
             this.numericUpDownDensity.Maximum = new decimal(new int[] {
             15,
             0,
@@ -173,7 +173,6 @@ namespace Life.FRNS
             // 
             this.comboBoxCellColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCellColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxCellColor.FormattingEnabled = true;
             this.comboBoxCellColor.Location = new System.Drawing.Point(19, 101);
             this.comboBoxCellColor.Name = "comboBoxCellColor";
             this.comboBoxCellColor.Size = new System.Drawing.Size(109, 24);
@@ -183,9 +182,9 @@ namespace Life.FRNS
             // buttonUpload
             // 
             this.buttonUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpload.Location = new System.Drawing.Point(19, 260);
+            this.buttonUpload.Location = new System.Drawing.Point(18, 260);
             this.buttonUpload.Name = "buttonUpload";
-            this.buttonUpload.Size = new System.Drawing.Size(139, 24);
+            this.buttonUpload.Size = new System.Drawing.Size(140, 24);
             this.buttonUpload.TabIndex = 11;
             this.buttonUpload.Text = "Upload";
             this.buttonUpload.UseVisualStyleBackColor = true;
@@ -236,6 +235,7 @@ namespace Life.FRNS
             // 
             // buttonHelpCellColor
             // 
+            this.buttonHelpCellColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.buttonHelpCellColor.Location = new System.Drawing.Point(134, 101);
             this.buttonHelpCellColor.Name = "buttonHelpCellColor";
             this.buttonHelpCellColor.Size = new System.Drawing.Size(24, 24);
@@ -246,7 +246,8 @@ namespace Life.FRNS
             // 
             // buttonHelpBackgroundColor
             // 
-            this.buttonHelpBackgroundColor.Location = new System.Drawing.Point(134, 156);
+            this.buttonHelpBackgroundColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonHelpBackgroundColor.Location = new System.Drawing.Point(134, 155);
             this.buttonHelpBackgroundColor.Name = "buttonHelpBackgroundColor";
             this.buttonHelpBackgroundColor.Size = new System.Drawing.Size(24, 24);
             this.buttonHelpBackgroundColor.TabIndex = 4;
@@ -256,7 +257,8 @@ namespace Life.FRNS
             // 
             // buttonHelpResolution
             // 
-            this.buttonHelpResolution.Location = new System.Drawing.Point(298, 155);
+            this.buttonHelpResolution.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonHelpResolution.Location = new System.Drawing.Point(298, 154);
             this.buttonHelpResolution.Name = "buttonHelpResolution";
             this.buttonHelpResolution.Size = new System.Drawing.Size(24, 24);
             this.buttonHelpResolution.TabIndex = 8;
@@ -266,7 +268,8 @@ namespace Life.FRNS
             // 
             // buttonHelpDensity
             // 
-            this.buttonHelpDensity.Location = new System.Drawing.Point(298, 98);
+            this.buttonHelpDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonHelpDensity.Location = new System.Drawing.Point(298, 100);
             this.buttonHelpDensity.Name = "buttonHelpDensity";
             this.buttonHelpDensity.Size = new System.Drawing.Size(24, 24);
             this.buttonHelpDensity.TabIndex = 6;
@@ -276,6 +279,7 @@ namespace Life.FRNS
             // 
             // buttonHelpImage
             // 
+            this.buttonHelpImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.buttonHelpImage.Location = new System.Drawing.Point(134, 228);
             this.buttonHelpImage.Name = "buttonHelpImage";
             this.buttonHelpImage.Size = new System.Drawing.Size(24, 24);
@@ -311,8 +315,6 @@ namespace Life.FRNS
             this.Controls.Add(this.buttonAccept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(356, 343);
-            this.MinimumSize = new System.Drawing.Size(356, 343);
             this.Name = "FormSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game \"Cell\" - Settings";

@@ -18,7 +18,7 @@ namespace Life.FRNS
     public partial class FormSettings : Form
     {
 
-        BackgroundImage setBackgroundImag = new BackgroundImage();
+        BackgroundImage setBackgroundImage = new BackgroundImage();
         public string selectedColorDisplay;
         public string selectedColorElements;
         public string pathColors = $@"..\..\DATA\colors.txt";
@@ -28,10 +28,11 @@ namespace Life.FRNS
             InitializeComponent();
             checkBoxImage.Checked = false;
             buttonUpload.Enabled = false;
-            using (StreamReader f = new StreamReader(pathColors, System.Text.Encoding.GetEncoding(1252)))
+
+            using (StreamReader stream = new StreamReader(pathColors, System.Text.Encoding.GetEncoding(1252)))
             {
                 string str;
-                while ((str = f.ReadLine()) != null)
+                while ((str = stream.ReadLine()) != null)
                 {
                     comboBoxBackgroundColor.Items.Add(str + Environment.NewLine);
                     comboBoxCellColor.Items.Add(str + Environment.NewLine);
@@ -42,8 +43,7 @@ namespace Life.FRNS
         /// Changing the Enabled form Elements
         /// </summary>
         /// <param name="trueOrFalse"></param>
-        public void BlockElements(bool trueOrFalse)
-        {
+        public void BlockElements(bool trueOrFalse)        {
             comboBoxBackgroundColor.Enabled = trueOrFalse;
             comboBoxCellColor.Enabled = trueOrFalse;
             numericUpDownDensity.Enabled = trueOrFalse;
@@ -136,7 +136,7 @@ namespace Life.FRNS
 
         private void buttonUpload_Click(object sender, EventArgs e)
         {
-            setBackgroundImag.SetBackgroundImage();
+            setBackgroundImage.SetBackgroundImage();
             Properties.Settings.Default.thereImage = true;
             string filePath = Properties.Settings.Default.filePath;
             BlockElements(false);
