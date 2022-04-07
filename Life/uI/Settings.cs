@@ -21,7 +21,7 @@ namespace Life.FRNS
         BackgroundImage setBackgroundImage = new BackgroundImage();
         public string selectedColorDisplay;
         public string selectedColorElements;
-        public string pathColors = $@"..\..\DATA\colors.txt";
+        public string pathColors = $@"..\..\resources\colors.txt";
 
         public FormSettings()
         {

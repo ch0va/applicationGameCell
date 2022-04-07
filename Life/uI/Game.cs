@@ -274,8 +274,7 @@ namespace Life.FRN
             }
         }
 
-
-        private void buttonHelp_Click(object sender, EventArgs e)
+        public void GetHelp()
         {
             BoxWithMessage help = new BoxWithMessage();
             help.GetMessage("The universe of the game «Cell» is an infinite, " +
@@ -294,6 +293,11 @@ namespace Life.FRN
                 "to add live cells and the right mouse button to remove them." +
                 "\n\nYou can also upload your own background image in the settings." +
                 "\n\nPlease, enjoy the game!", "Reference Information");
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            GetHelp();
         }
 
         private void buttonSnapshot_Click(object sender, EventArgs e)
