@@ -219,7 +219,7 @@ namespace Life.FRN
             {
                 int x = e.Location.X / resolution;
                 int y = e.Location.Y / resolution;
-                bool control = InvalidMousePosition(x, y);
+                bool control = ValidMousePosition(x, y);
                 if (control)
                     cell[x, y] = true;
             }
@@ -228,13 +228,13 @@ namespace Life.FRN
             {
                 var x = e.Location.X / resolution;
                 var y = e.Location.Y / resolution;
-                var control = InvalidMousePosition(x, y);
+                var control = ValidMousePosition(x, y);
                 if (control)
                     cell[x, y] = false;
             }
         }
 
-        private bool InvalidMousePosition(int x, int y) //Checking the edge of the screen as an invalid value to create a cell.
+        private bool ValidMousePosition(int x, int y) //Checking the edge of the screen as an invalid value to create a cell.
         {
             return x >= 0 && y >= 0 && x < cols && y < rows;
         }
