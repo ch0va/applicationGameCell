@@ -56,10 +56,10 @@ namespace Life.FRNS
         public void buttonAccept_Click(object sender, EventArgs e)
         {
             Resolution setResolution = new Resolution();
-            setResolution.SetResolution((int)numericUpDownResolution.Value);
+            setResolution.SetResolution( (int)numericUpDownResolution.Value);
 
             Density setDensity = new Density();
-            setDensity.SetDensity((int)numericUpDownDensity.Value);
+            setDensity.SetDensity(17 -(int)numericUpDownDensity.Value);
 
 
             BackgroundColor colorDisplay = new BackgroundColor();
@@ -188,7 +188,7 @@ namespace Life.FRNS
         {
             BoxWithMessage helpDensity = new BoxWithMessage();
             helpDensity.GetMessage("This parameter is responsible for changing " +
-                "the rarity of generation of new cell.","Help");
+                "the density of generation of new cell.", "Help");
         }
 
         private void buttonHelpBackgroundColor_Click(object sender, EventArgs e)

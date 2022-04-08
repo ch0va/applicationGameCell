@@ -27,9 +27,10 @@ namespace Life
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.filePath.DefaultIfEmpty();
-           Properties.Settings.Default.Save();
+            Properties.Settings.Default.filePath.DefaultIfEmpty(); 
+            Properties.Settings.Default.Save();
             Application.Exit();
+
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
@@ -54,6 +55,7 @@ namespace Life
             helpImage.GetMessage("The game «Cell»  is a simplified version of the" +
                " «Game of Life», a cellular automaton developed " +
                "by British mathematician John Horton Conway in 1970. ", "About the program");
+
            
         }
     }

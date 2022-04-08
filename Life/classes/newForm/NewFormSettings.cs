@@ -14,7 +14,7 @@ namespace Life
             s.comboBoxCellColor.Text = Properties.Settings.Default.cellColor;
             s.comboBoxBackgroundColor.Text = Properties.Settings.Default.backgroundColor;
             s.numericUpDownResolution.Value = Properties.Settings.Default.resolution;
-            s.numericUpDownDensity.Value = Properties.Settings.Default.density;
+            s.numericUpDownDensity.Value = 17 -Properties.Settings.Default.density ;
             s.checkBoxImage.Checked = Properties.Settings.Default.checkBoxImageChecked;
             s.buttonAccept.Enabled = false;
             s.Show();
