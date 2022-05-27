@@ -55,8 +55,16 @@ namespace Life.FRN
             {
                 if (backgroundImagePath != "")
                 {
+                    try
+                    { 
                     backgroundImage = Image.FromFile(backgroundImagePath); //Setting the uploaded image as the background image
                     bitmap = new Bitmap(backgroundImage, pictureBoxDisplay.Width+1, pictureBoxDisplay.Height + 1);
+                    }
+
+                    catch
+                    {
+                        Properties.Settings.Default.checkBoxImageChecked = false;
+                    }
                 }
                 
             }
@@ -129,11 +137,16 @@ namespace Life.FRN
             {
                 if (backgroundImagePath != "")
                 {
+                    try
+                    { 
                     graphics.Clear(Color.FromName(newColorDisplay));
                     graphics.DrawImageUnscaled(bitmap, 0, 0, pictureBoxDisplay.Width, pictureBoxDisplay.Height);
-                }
-                else
+                    }
+                    catch
+                    { 
                     Properties.Settings.Default.checkBoxImageChecked = false;
+                    }
+                }
             }
 
             for (int x = 0; x < cols; x++) //Creation of new cells according to the rules of the game.
@@ -259,12 +272,13 @@ namespace Life.FRN
             if (!(pictureBoxDisplay.Image == null))
             {
 
-                var saveFileDialog = new SaveFileDialog();
-                saveFileDialog.FileName = "Nameless.png";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                var saveSnapshotFile = new SaveFileDialog();
+                saveSnapshotFile.FileName = "Nameless";
+                saveSnapshotFile.Filter = "PNG|*.png|JPEG|*.jpg";
+                saveSnapshotFile.Title = "Save an Image File";
+                if (saveSnapshotFile.ShowDialog() == DialogResult.OK)
                 {
-
-                    pictureBoxDisplay.Image.Save(saveFileDialog.FileName);
+                    pictureBoxDisplay.Image.Save(saveSnapshotFile.FileName);
                 }
             }
             else
