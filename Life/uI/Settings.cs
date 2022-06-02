@@ -29,15 +29,15 @@ namespace Life.FRNS
             checkBoxImage.Checked = false;
             buttonUpload.Enabled = false;
 
-            using (StreamReader stream = new StreamReader(pathColors, System.Text.Encoding.GetEncoding(1252)))
-            {
-                string str;
-                while ((str = stream.ReadLine()) != null)
+                using (StreamReader stream = new StreamReader(pathColors, System.Text.Encoding.GetEncoding(1252)))
                 {
-                    comboBoxBackgroundColor.Items.Add(str + Environment.NewLine);
-                    comboBoxCellColor.Items.Add(str + Environment.NewLine);
-                }
-            }
+                    string str;
+                    while ((str = stream.ReadLine()) != null)
+                    {
+                        comboBoxBackgroundColor.Items.Add(str + Environment.NewLine);
+                        comboBoxCellColor.Items.Add(str + Environment.NewLine);
+                    }
+                } 
         }
         /// <summary>
         /// Changing the Enabled form Elements

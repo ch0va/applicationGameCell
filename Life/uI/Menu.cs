@@ -19,12 +19,7 @@ namespace Life
         {
             InitializeComponent();
         }
-
-        private void FormMenu_Load(object sender, EventArgs e)
-        {
-
-        }
-
+            
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.filePath.DefaultIfEmpty(); 

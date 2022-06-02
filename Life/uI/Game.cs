@@ -24,6 +24,7 @@ namespace Life.FRN
         private Graphics graphics;
         public int resolution;
         public int density;
+        private int numberOfGeneration = 0;
         public bool[,] cell;
         public int rows;
         public int cols;
@@ -34,6 +35,7 @@ namespace Life.FRN
         public formGame()
         {
             InitializeComponent();
+            textBoxGenerations.Enabled = false;
         }
 
         /// <summary>
@@ -75,6 +77,8 @@ namespace Life.FRN
         /// </summary>
         public void NewGame()
         {
+            numberOfGeneration = 0;
+            textBoxGenerations.Enabled = true;
             GetAllParameters();
             buttonStop.Enabled = true;
             buttonStart.Enabled = false;
@@ -177,6 +181,14 @@ namespace Life.FRN
             }
             cell = newCell;
             pictureBoxDisplay.Refresh(); //Game screen refreshing with new cell generation.
+            if (numberOfGeneration != 10000)
+            {
+                textBoxGenerations.Text = $"{numberOfGeneration++}";
+            }
+            else
+            {
+                textBoxGenerations.Text = "9999+";
+            }
         }
 
         /// <summary>

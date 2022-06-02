@@ -1,4 +1,5 @@
 ﻿using Life.FRNS;
+using System.IO;
 
 namespace Life
 {
@@ -9,8 +10,15 @@ namespace Life
         /// </summary>
         public void GetFormSettings()
         {
-            FormSettings s = new FormSettings();
+            if (File.Exists($@"..\..\resources\colors.txt") == false)
+            {
+                string path = $@"..\..\resources";
+                File.AppendAllText(path + "\\colors.txt", "Aqua\nAquamarine\nAzure\nBeige" +
+                    "\nBlack\nBlue\nBrown\nCoral\nGold\nGray\nGreen\nIndigo\nIvory\nKhaki" +
+                    "\nLime\nOlive\nOrange\nPink\nPurple\nRed\nSalmon\nSilver\nSkyBlue\nViolet\nWhite\nYellow");
+            }
 
+            FormSettings s = new FormSettings();
             s.comboBoxCellColor.Text = Properties.Settings.Default.cellColor;
             s.comboBoxBackgroundColor.Text = Properties.Settings.Default.backgroundColor;
             s.numericUpDownResolution.Value = Properties.Settings.Default.resolution;
