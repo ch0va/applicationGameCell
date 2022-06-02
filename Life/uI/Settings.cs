@@ -109,11 +109,11 @@ namespace Life.FRNS
             numericUpDownDensity.Value = 5;
             numericUpDownResolution.Value = 15;
 
-            comboBoxBackgroundColor.SelectedIndex = 137;
+            comboBoxBackgroundColor.SelectedIndex = 24;
             comboBoxBackgroundColor.Text = "White";
 
 
-            comboBoxCellColor.SelectedIndex = 7;
+            comboBoxCellColor.SelectedIndex = 4;
             comboBoxCellColor.Text = "Black";
             checkBoxImage.Checked = false;
 

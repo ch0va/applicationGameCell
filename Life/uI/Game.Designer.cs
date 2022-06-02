@@ -32,6 +32,7 @@ namespace Life.FRN
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formGame));
             this.splitContainerGame = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBoxGenerations = new System.Windows.Forms.TextBox();
             this.labelGame = new System.Windows.Forms.Label();
             this.buttonHelp = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@ namespace Life.FRN
             this.buttonStart = new System.Windows.Forms.Button();
             this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGame)).BeginInit();
             this.splitContainerGame.Panel1.SuspendLayout();
             this.splitContainerGame.Panel2.SuspendLayout();
@@ -81,6 +81,17 @@ namespace Life.FRN
             this.splitContainerGame.SplitterDistance = 95;
             this.splitContainerGame.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label1.Location = new System.Drawing.Point(7, 715);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 32);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Number of \r\ngenerations:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // textBoxGenerations
             // 
             this.textBoxGenerations.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -91,7 +102,6 @@ namespace Life.FRN
             this.textBoxGenerations.Size = new System.Drawing.Size(76, 28);
             this.textBoxGenerations.TabIndex = 23;
             this.textBoxGenerations.TabStop = false;
-            this.textBoxGenerations.Text = "1111111";
             this.textBoxGenerations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelGame
@@ -200,17 +210,6 @@ namespace Life.FRN
             // 
             this.timerGame.Interval = 40;
             this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label1.Location = new System.Drawing.Point(7, 715);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 32);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Number of \r\ngenerations:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // formGame
             // 
